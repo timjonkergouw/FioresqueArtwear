@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiori - Fashion Brand</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-left">
+                <a href="#" class="nav-link">Shop</a>
+                <a href="#" class="nav-link">Designs</a>
+                <a href="#" class="nav-link">About</a>
+            </div>
+            <div class="logo">
+                <img src="images/fiori logo zwartwit.png" alt="Fiori Logo" class="logo-img" id="logoImg">
+            </div>
+            <div class="nav-right">
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="account-icon" id="accountIcon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero GIF Section -->
+    <section class="hero">
+        <div class="hero-gif">
+            <img src="images/fiori animatie loop.gif"Fiori Hero">
+        </div>
+    </section>
+
+    <!-- New Arrivals Section -->
+    <section class="new-arrivals">
+        <h2 class="section-title">New Arrivals</h2>
+        <div class="new-arrivals-grid">
+            <div class="new-arrivals-item">
+                <div class="new-arrivals-image">
+                    <img src="images/fruit shirt back.png" alt="Fruit Shirt Back" class="front-image">
+                    <img src="images/fruit shirt front.png" alt="Fruit Shirt Front" class="back-image">
+                </div>
+            </div>
+            <div class="new-arrivals-item">
+                <div class="new-arrivals-image">
+                    <img src="images/tropical shirt back.png" alt="Tropical Shirt Back" class="front-image">
+                    <img src="images/tropical shirt front.png" alt="Tropical Shirt Front" class="back-image">
+                </div>
+            </div>
+            <div class="new-arrivals-item">
+                <div class="new-arrivals-image">
+                    <img src="images/vase shirt back.png" alt="Vase Shirt Back" class="front-image">
+                    <img src="images/vase shirt front.png" alt="Vase Shirt Front" class="back-image">
+                </div>
+            </div>
+            <div class="new-arrivals-item">
+                <div class="new-arrivals-image">
+                    <img src="images/flower house back.png" alt="Flower House Back" class="front-image">
+                    <img src="images/flower house front.png" alt="Flower House Front" class="back-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Collection Section -->
+    <section class="new-collection">
+        <div class="collection-image">
+            <img src="images/new drop image.png"New Collection">
+        </div>
+        <div class="collection-overlay">
+            <h2>New Collection</h2>
+            <p>Ontdek onze nieuwste creaties die stijl en comfort combineren.</p>
+            <p>Elk stuk is zorgvuldig ontworpen met oog voor detail en duurzaamheid.</p>
+            <p>Beleef de perfecte balans tussen mode en functionaliteit.</p>
+            <button class="shop-now-btn">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>About</h2>
+                <p>Fiori is meer dan alleen een kledingmerk. We zijn een beweging die creativiteit viert en individuele stijl omarmt. Onze collecties zijn geïnspireerd door kunst, cultuur en de schoonheid van het dagelijks leven.</p>
+                <p>Elk stuk vertelt een verhaal en draagt bij aan jouw unieke identiteit. Van concept tot creatie, we streven naar uitmuntendheid in elk detail.</p>
+                <button class="discover-more-btn">Discover More</button>
+            </div>
+            <div class="about-image">
+                <img src="images/fiori combilogo.png" alt="About Fiori">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/fiori logo.png" alt="Fiori Logo" class="footer-logo-img">
+            </div>
+            <div class="footer-contact">
+                <div class="contact-item">
+                    <h3>Newsletter</h3>
+                    <input type="email" placeholder="Email address" class="newsletter-input">
+                    <button class="newsletter-btn">Subscribe</button>
+                </div>
+                <div class="contact-item">
+                    <h3>Location</h3>
+                    <p>Amsterdam, Netherlands</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Mail</h3>
+                    <p>info@fiori.com</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <p>+31 20 123 4567</p>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Shopping Cart</h3>
+                <button class="close-cart" id="closeCart">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-total">
+                <p>Total: €<span id="cartTotal">0.00</span></p>
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-content">
+            <div class="login-header">
+                <h3>Login</h3>
+                <button class="close-login" id="closeLogin">&times;</button>
+            </div>
+            <form class="login-form">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 

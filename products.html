@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Fiori</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-left">
+                <a href="products.html" class="nav-link">Shop</a>
+                <a href="#" class="nav-link">Designs</a>
+                <a href="#" class="nav-link">About</a>
+            </div>
+            <div class="logo">
+                <img src="images/fiori logo zwartwit.png" alt="Fiori Logo" class="logo-img" id="logoImg">
+            </div>
+            <div class="nav-right">
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="account-icon" id="accountIcon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h1 class="page-title">Our Collection</h1>
+            
+            <!-- Filters -->
+            <div class="filters">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="shirts">Shirts</button>
+                <button class="filter-btn" data-category="sweaters">Sweaters</button>
+                <button class="filter-btn" data-category="hoodies">Hoodies</button>
+                <button class="filter-btn" data-category="knitwear">Knitwear</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/fiori logo.png" alt="Fiori Logo" class="footer-logo-img">
+            </div>
+            <div class="footer-contact">
+                <div class="contact-item">
+                    <h3>Newsletter</h3>
+                    <input type="email" placeholder="Email address" class="newsletter-input">
+                    <button class="newsletter-btn">Subscribe</button>
+                </div>
+                <div class="contact-item">
+                    <h3>Location</h3>
+                    <p>Amsterdam, Netherlands</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Mail</h3>
+                    <p>info@fiori.com</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <p>+31 20 123 4567</p>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Shopping Cart</h3>
+                <button class="close-cart" id="closeCart">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-total">
+                <p>Total: €<span id="cartTotal">0.00</span></p>
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-content">
+            <div class="login-header">
+                <h3>Login</h3>
+                <button class="close-login" id="closeLogin">&times;</button>
+            </div>
+            <form class="login-form">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html> 
