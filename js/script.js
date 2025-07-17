@@ -33,6 +33,43 @@ function setupEventListeners() {
     // Login form submission
     if (loginForm) loginForm.addEventListener('submit', handleLogin);
     
+    // Hamburger menu functionality
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (hamburgerMenu && mobileMenu) {
+        hamburgerMenu.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link:not(.shop-toggle)');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+        
+        // Shop dropdown functionality
+        const shopToggle = document.getElementById('shopToggle');
+        const shopDropdown = document.getElementById('shopDropdown');
+        
+        if (shopToggle && shopDropdown) {
+            shopToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleShopDropdown();
+            });
+        }
+        
+        // Close mobile menu when clicking outside
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) {
+                closeMobileMenu();
+            }
+        });
+    }
+    
     // Close modals when clicking outside
     window.addEventListener('click', function(event) {
         if (event.target === cartOverlay) {
@@ -40,6 +77,9 @@ function setupEventListeners() {
         }
         if (event.target === loginModal) {
             toggleLogin();
+        }
+        if (event.target === mobileMenu) {
+            closeMobileMenu();
         }
     });
     
@@ -331,4 +371,80 @@ function setupNewArrivalsClicks() {
             window.location.href = `product-detail.html?id=${productId}`;
         });
     });
+}
+
+// Mobile menu functions
+function toggleMobileMenu() {
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (hamburgerMenu && mobileMenu) {
+        const isActive = hamburgerMenu.classList.contains('active');
+        
+        if (isActive) {
+            closeMobileMenu();
+        } else {
+            hamburgerMenu.classList.add('active');
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+}
+
+function closeMobileMenu() {
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (hamburgerMenu && mobileMenu) {
+        hamburgerMenu.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Shop dropdown functions
+function toggleShopDropdown() {
+    const shopToggle = document.getElementById('shopToggle');
+    const shopDropdown = document.getElementById('shopDropdown');
+    
+    if (shopToggle && shopDropdown) {
+        const isActive = shopToggle.classList.contains('active');
+        
+        if (isActive) {
+            shopToggle.classList.remove('active');
+            shopDropdown.classList.remove('active');
+        } else {
+            shopToggle.classList.add('active');
+            shopDropdown.classList.add('active');
+        }
+    }
 } 
+
+// Header background on scroll (responsive en robuust)
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    const hero = document.querySelector('.hero');
+    if (!header) return;
+    if (!hero) {
+        header.classList.add('header-solid');
+        return;
+    }
+    const heroRect = hero.getBoundingClientRect();
+    const isMobile = window.innerWidth <= 600;
+    if (isMobile) {
+        // Op mobiel: zodra je 30% van het GIF voorbij bent
+        const trigger = heroRect.height * 0.3;
+        if (heroRect.bottom <= window.innerHeight - trigger) {
+            header.classList.add('header-solid');
+        } else {
+            header.classList.remove('header-solid');
+        }
+    } else {
+        // Op desktop: pas als je helemaal voorbij het GIF bent
+        if (heroRect.bottom <= 0) {
+            header.classList.add('header-solid');
+        } else {
+            header.classList.remove('header-solid');
+        }
+    }
+}); 

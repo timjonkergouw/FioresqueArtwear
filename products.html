@@ -9,12 +9,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="products-page">
     <!-- Header -->
     <header class="header">
         <nav class="nav">
             <div class="nav-left">
-                <a href="products.html" class="nav-link">Shop</a>
+                <div class="nav-item">
+                    <a href="products.html" class="nav-link">Shop</a>
+                    <div class="header-dropdown">
+                        <a href="products.html" class="dropdown-link">All Products</a>
+                        <a href="products.html?category=shirts" class="dropdown-link">Shirts</a>
+                        <a href="products.html?category=hoodies" class="dropdown-link">Hoodies</a>
+                        <a href="products.html?category=accessories" class="dropdown-link">Accessories</a>
+                        <a href="products.html?category=new" class="dropdown-link">New Arrivals</a>
+                        <a href="products.html?category=sale" class="dropdown-link">Sale</a>
+                    </div>
+                </div>
                 <a href="#" class="nav-link">Designs</a>
                 <a href="#" class="nav-link">About</a>
             </div>
@@ -30,7 +40,34 @@
                     <i class="fas fa-user"></i>
                 </div>
             </div>
+            <!-- Hamburger Menu Button -->
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-logo">
+                <img src="images/fiori logo zwartwit.png" alt="Fiori Logo" class="mobile-logo-img">
+            </div>
+            <div class="mobile-nav-item">
+                <div class="mobile-nav-link shop-toggle" id="shopToggle">
+                    Shop <span class="toggle-icon">+</span>
+                </div>
+                <div class="shop-dropdown" id="shopDropdown">
+                    <a href="products.html" class="dropdown-link">All Products</a>
+                    <a href="products.html?category=shirts" class="dropdown-link">Shirts</a>
+                    <a href="products.html?category=hoodies" class="dropdown-link">Hoodies</a>
+                    <a href="products.html?category=accessories" class="dropdown-link">Accessories</a>
+                    <a href="products.html?category=new" class="dropdown-link">New Arrivals</a>
+                    <a href="products.html?category=sale" class="dropdown-link">Sale</a>
+                </div>
+            </div>
+            <a href="#" class="mobile-nav-link">Designs</a>
+            <a href="#" class="mobile-nav-link">About</a>
+        </div>
     </header>
 
     <!-- Products Section -->
@@ -57,33 +94,66 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-logo">
-                <img src="images/fiori logo.png" alt="Fiori Logo" class="footer-logo-img">
+            <!-- Desktop layout -->
+            <div class="footer-desktop">
+                <div class="footer-logo">
+                    <img src="images/fiori logo.png" alt="Fiori Logo" class="footer-logo-img">
+                </div>
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <h3>Newsletter</h3>
+                        <input type="email" placeholder="Email address" class="newsletter-input">
+                        <button class="newsletter-btn">Subscribe</button>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Location</h3>
+                        <p>'s-Hertogenbosch, Netherlands</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Contact</h3>
+                        <p>info@fiori.com</p>
+                        <p>+31 20 123 4567</p>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                </div>
             </div>
-            <div class="footer-contact">
-                <div class="contact-item">
-                    <h3>Newsletter</h3>
-                    <input type="email" placeholder="Email address" class="newsletter-input">
-                    <button class="newsletter-btn">Subscribe</button>
+            
+            <!-- Mobile layout -->
+            <div class="footer-mobile">
+                <div class="footer-top-row">
+                    <div class="footer-newsletter">
+                        <h3>Newsletter</h3>
+                        <input type="email" placeholder="Email address" class="newsletter-input">
+                        <button class="newsletter-btn">Subscribe</button>
+                    </div>
+                    <div class="footer-location">
+                        <h3>Location</h3>
+                        <p>'s-Hertogenbosch, Netherlands</p>
+                    </div>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <h3>Contact</h3>
+                            <p>info@fiori.com</p>
+                            <p>+31 20 123 4567</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <h3>Location</h3>
-                    <p>Amsterdam, Netherlands</p>
+                <div class="footer-bottom-row">
+                    <div class="footer-logo">
+                        <img src="images/fiori logo.png" alt="Fiori Logo" class="footer-logo-img">
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <h3>Mail</h3>
-                    <p>info@fiori.com</p>
-                </div>
-                <div class="contact-item">
-                    <h3>Phone</h3>
-                    <p>+31 20 123 4567</p>
-                </div>
-            </div>
-            <div class="footer-social">
-                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
             </div>
         </div>
     </footer>

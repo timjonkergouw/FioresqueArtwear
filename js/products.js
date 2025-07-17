@@ -46,10 +46,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check for URL parameter to auto-filter
     const urlParams = new URLSearchParams(window.location.search);
     const filterParam = urlParams.get('filter');
+    const categoryParam = urlParams.get('category');
+    const param = categoryParam || filterParam;
     
-    if (filterParam) {
+    if (param) {
         // Find and click the appropriate filter button
-        const filterButton = document.querySelector(`[data-category="${filterParam}"]`);
+        const filterButton = document.querySelector(`[data-category="${param}"]`);
         if (filterButton) {
             filterButton.click();
         }
