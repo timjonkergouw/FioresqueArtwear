@@ -99,6 +99,9 @@ function setupEventListeners() {
     
     // New Arrivals click functionality
     setupNewArrivalsClicks();
+    
+    // Setup logo hover functionality
+    setupLogoHover();
 }
 
 // Cart functions
@@ -210,11 +213,11 @@ function toggleCart() {
 
 // Storage functions
 function saveCartToStorage() {
-    localStorage.setItem('fioriCart', JSON.stringify(cart));
+    localStorage.setItem('fioresqueCart', JSON.stringify(cart));
 }
 
 function loadCartFromStorage() {
-    const savedCart = localStorage.getItem('fioriCart');
+    const savedCart = localStorage.getItem('fioresqueCart');
     if (savedCart) {
         cart = JSON.parse(savedCart);
     }
@@ -236,7 +239,7 @@ function handleLogin(event) {
     // Simple validation (in a real app, this would be server-side)
     if (email && password) {
         isLoggedIn = true;
-        localStorage.setItem('fioriLoggedIn', 'true');
+        localStorage.setItem('fioresqueLoggedIn', 'true');
         toggleLogin();
         showNotification('Successfully logged in!');
         
@@ -251,7 +254,7 @@ function handleLogin(event) {
 
 // Check if user is already logged in
 function checkLoginStatus() {
-    const loggedIn = localStorage.getItem('fioriLoggedIn');
+    const loggedIn = localStorage.getItem('fioresqueLoggedIn');
     if (loggedIn === 'true') {
         isLoggedIn = true;
         if (accountIcon) {
@@ -288,7 +291,7 @@ function showNotification(message) {
         position: fixed;
         top: 100px;
         right: 20px;
-        background: #00DD1A;
+        background: #4EC977;
         color: white;
         padding: 1rem 2rem;
         z-index: 1003;
@@ -337,17 +340,40 @@ document.head.appendChild(style);
 // Logo hover effect
 function setupLogoHover() {
     const logoImg = document.getElementById('logoImg');
+    const mobileLogoImg = document.querySelector('.mobile-logo-img');
     
+    // Check if we're on the home page or other pages
+    const isHomePage = window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/');
+    console.log('Current page:', window.location.pathname);
+    console.log('Is home page:', isHomePage);
+    
+    // Desktop logo hover effect
     if (logoImg) {
-        const originalSrc = 'images/fiori logo zwartwit.png';
-        const hoverSrc = 'images/fiori logo.png';
+        let originalSrc, hoverSrc;
+        
+        if (isHomePage) {
+            // Home page: flower as default, text on hover
+            originalSrc = 'images/fioresque bloem wit.png';
+            hoverSrc = 'images/fioresque wit.png';
+        } else {
+            // Other pages: text as default, flower on hover
+            originalSrc = 'images/fioresque wit.png';
+            hoverSrc = 'images/fioresque bloem wit.png';
+        }
+        
+        console.log('Desktop logo - Original:', originalSrc, 'Hover:', hoverSrc);
         
         logoImg.addEventListener('mouseenter', function() {
+            console.log('Desktop logo hover - changing to:', hoverSrc);
             this.src = hoverSrc;
         });
         
         logoImg.addEventListener('mouseleave', function() {
-            this.src = originalSrc;
+            // Only change back to original if header is not solid
+            const header = document.querySelector('.header');
+            if (!header || !header.classList.contains('header-solid')) {
+                this.src = originalSrc;
+            }
         });
         
         // Add click event to navigate to home
@@ -355,10 +381,19 @@ function setupLogoHover() {
             window.location.href = 'index.html';
         });
     }
+    
+    // Mobile logo - static display only (no hover, no link)
+    if (mobileLogoImg) {
+        // Always show fioresque wit.png in mobile menu
+        mobileLogoImg.src = 'images/fioresque wit.png';
+        
+        // Remove any existing event listeners by cloning the element
+        const newMobileLogoImg = mobileLogoImg.cloneNode(true);
+        mobileLogoImg.parentNode.replaceChild(newMobileLogoImg, mobileLogoImg);
+    }
 }
 
-// Setup logo hover effect
-setupLogoHover();
+// Logo hover effect is now called from setupEventListeners()
 
 // New Arrivals click functionality
 function setupNewArrivalsClicks() {
@@ -424,27 +459,85 @@ function toggleShopDropdown() {
 window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
     const hero = document.querySelector('.hero');
+    const logoImg = document.getElementById('logoImg');
+    const mobileLogoImg = document.querySelector('.mobile-logo-img');
+    
+    // Check if we're on the home page or other pages
+    const isHomePage = window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/');
+    const isProductsPage = window.location.pathname.includes('products.html') || window.location.pathname.includes('product-detail.html');
+    
     if (!header) return;
     if (!hero) {
         header.classList.add('header-solid');
+        // Only change logo on home page, not on products/product-detail pages
+        if (isHomePage && !isProductsPage) {
+            if (logoImg) logoImg.src = 'images/fioresque wit.png';
+            if (mobileLogoImg) mobileLogoImg.src = 'images/fioresque wit.png';
+        } else if (!isHomePage && !isProductsPage) {
+            if (logoImg) logoImg.src = 'images/fioresque bloem wit.png';
+            if (mobileLogoImg) mobileLogoImg.src = 'images/fioresque bloem wit.png';
+        }
         return;
     }
+    
     const heroRect = hero.getBoundingClientRect();
     const isMobile = window.innerWidth <= 600;
+    const isHeaderSolid = header.classList.contains('header-solid');
+    
     if (isMobile) {
         // Op mobiel: zodra je 30% van het GIF voorbij bent
         const trigger = heroRect.height * 0.3;
         if (heroRect.bottom <= window.innerHeight - trigger) {
-            header.classList.add('header-solid');
+            if (!isHeaderSolid) {
+                header.classList.add('header-solid');
+                // Only change logo on home page, not on products/product-detail pages
+                if (isHomePage && !isProductsPage) {
+                    if (logoImg) logoImg.src = 'images/fioresque wit.png';
+                    if (mobileLogoImg) mobileLogoImg.src = 'images/fioresque wit.png';
+                } else if (!isHomePage && !isProductsPage) {
+                    if (logoImg) logoImg.src = 'images/fioresque bloem wit.png';
+                    if (mobileLogoImg) mobileLogoImg.src = 'images/fioresque bloem wit.png';
+                }
+            }
         } else {
-            header.classList.remove('header-solid');
+            if (isHeaderSolid) {
+                header.classList.remove('header-solid');
+                // Only change logo on home page, not on products/product-detail pages
+                if (isHomePage && !isProductsPage) {
+                    if (logoImg) logoImg.src = 'images/fioresque bloem wit.png';
+                    if (mobileLogoImg) mobileLogoImg.src = 'images/fioresque bloem wit.png';
+                } else if (!isHomePage && !isProductsPage) {
+                    if (logoImg) logoImg.src = 'images/fioresque wit.png';
+                    if (mobileLogoImg) mobileLogoImg.src = 'images/fioresque wit.png';
+                }
+            }
         }
     } else {
         // Op desktop: pas als je helemaal voorbij het GIF bent
         if (heroRect.bottom <= 0) {
-            header.classList.add('header-solid');
+            if (!isHeaderSolid) {
+                header.classList.add('header-solid');
+                // Only change logo on home page, not on products/product-detail pages
+                if (isHomePage && !isProductsPage) {
+                    if (logoImg) logoImg.src = 'images/fioresque wit.png';
+                    if (mobileLogoImg) mobileLogoImg.src = 'images/fioresque wit.png';
+                } else if (!isHomePage && !isProductsPage) {
+                    if (logoImg) logoImg.src = 'images/fioresque bloem wit.png';
+                    if (mobileLogoImg) mobileLogoImg.src = 'images/fioresque bloem wit.png';
+                }
+            }
         } else {
-            header.classList.remove('header-solid');
+            if (isHeaderSolid) {
+                header.classList.remove('header-solid');
+                // Only change logo on home page, not on products/product-detail pages
+                if (isHomePage && !isProductsPage) {
+                    if (logoImg) logoImg.src = 'images/fioresque bloem wit.png';
+                    if (mobileLogoImg) mobileLogoImg.src = 'images/fioresque bloem wit.png';
+                } else if (!isHomePage && !isProductsPage) {
+                    if (logoImg) logoImg.src = 'images/fioresque wit.png';
+                    if (mobileLogoImg) mobileLogoImg.src = 'images/fioresque wit.png';
+                }
+            }
         }
     }
 }); 

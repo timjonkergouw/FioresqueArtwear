@@ -81,28 +81,27 @@ body {
     transform: translateX(-50%);
 }
 
+.logo a {
+    display: block;
+    text-decoration: none;
+}
+
 .logo-img {
     height: 64px;
     width: auto;
-    transition: all 0.3s ease;
+    transition: filter 0.3s ease, transform 0.3s ease;
     cursor: pointer;
     display: block;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
 }
 
 .logo-img:hover {
-    height: 72px;
     transform: scale(1.1);
-}
-
-/* === HIER KUN JE DE HOVER-AFBEELDING AANPASSEN === */
-.logo-img:hover {
-    filter: drop-shadow(0 0 8px #fff8);
-    opacity: 1;
+    filter: drop-shadow(0 0 4px #fff6);
 }
 
 .nav-link {
-    font-family: 'Days One', cursive;
+    font-family: 'Coolvetica', sans-serif;
     text-decoration: none;
     color: #ffffff;
     font-weight: 500;
@@ -111,7 +110,7 @@ body {
 }
 
 .nav-link:hover {
-    color: #00DD1A;
+    color: #4EC977;
 }
 
 /* Header Dropdown Styles */
@@ -153,21 +152,21 @@ body.products-page .header-dropdown {
     padding: 0.75rem 1.5rem;
     color: #ffffff;
     text-decoration: none;
-    font-family: 'Days One', cursive;
+    font-family: 'Coolvetica', sans-serif;
     font-size: 1rem;
     transition: all 0.3s ease;
     border-left: 3px solid transparent;
 }
 
 .header-dropdown .dropdown-link:hover {
-    background: #00DD1A;
+    background: #4EC977;
     color: #323131;
     border-left-color: #ffffff;
     transform: translateX(5px);
 }
 
 .logo h1 {
-    font-family: 'Days One', cursive;
+    font-family: 'Coolvetica', sans-serif;
     font-size: 2rem;
     color: #ffffff;
     letter-spacing: 2px;
@@ -182,14 +181,14 @@ body.products-page .header-dropdown {
 }
 
 .cart-icon:hover, .account-icon:hover {
-    color: #00DD1A;
+    color: #4EC977;
 }
 
 .cart-count {
     position: absolute;
     top: -10px;
     right: -10px;
-    background: #FF6B6B;
+    background: #4EC977;
     color: white;
     border-radius: 50%;
     width: 24px;
@@ -249,7 +248,7 @@ body.products-page .header-dropdown {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    font-family: 'Days One', cursive;
+    font-family: 'Coolvetica', sans-serif;
     color: #ffffff;
 }
 
@@ -336,13 +335,13 @@ body.products-page .header-dropdown {
 
 .price {
     font-weight: bold;
-    color: #00DD1A;
+    color: #4EC977;
     font-size: 1.1rem;
     margin-bottom: 1rem;
 }
 
 .add-to-cart-btn {
-    background: #00DD1A;
+    background: #4EC977;
     color: white;
     border: none;
     padding: 0.8rem 1.5rem;
@@ -354,7 +353,7 @@ body.products-page .header-dropdown {
 }
 
 .add-to-cart-btn:hover {
-    background: #00B815;
+    background: #3DB866;
 }
 
 .add-to-cart-btn:disabled {
@@ -389,7 +388,7 @@ body.products-page .header-dropdown {
 .collection-overlay {
     position: absolute;
     top: 50%;
-    right: 10%;
+    right: 5%;
     transform: translateY(-50%);
     padding: 3rem;
     max-width: 500px;
@@ -403,7 +402,7 @@ body.products-page .header-dropdown {
 .collection-overlay h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    font-family: 'Days One', cursive;
+    font-family: 'Coolvetica', sans-serif;
     color: #ffffff;
 }
 
@@ -447,7 +446,7 @@ body.products-page .header-dropdown {
 .about-text h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    font-family: 'Days One', cursive;
+    font-family: 'Coolvetica', sans-serif;
     color: #333333;
 }
 
@@ -467,7 +466,7 @@ body.products-page .header-dropdown {
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 0;
-    font-family: 'Days One', cursive;
+    font-family: 'Coolvetica', sans-serif;
     margin-top: 1rem;
 }
 
@@ -476,10 +475,18 @@ body.products-page .header-dropdown {
     color: #f8f8f8;
 }
 
-.about-image img {
+.about-image {
     width: 100%;
-    height: auto;
-    max-height: 400px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-image img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
     object-fit: contain;
     border-radius: 8px;
 }
@@ -508,7 +515,7 @@ body.products-page .header-dropdown {
 }
 
 .footer-logo-img {
-    height: 80px;
+    height: 100px;
     width: auto;
     margin-bottom: 1rem;
 }
@@ -521,7 +528,7 @@ body.products-page .header-dropdown {
 
 .contact-item h3 {
     margin-bottom: 0.5rem;
-    color: #00DD1A;
+    color: #4EC977;
 }
 
 .contact-item p {
@@ -537,7 +544,7 @@ body.products-page .header-dropdown {
 }
 
 .newsletter-btn {
-    background: #00DD1A;
+    background: #4EC977;
     color: white;
     border: none;
     padding: 0.8rem 1.5rem;
@@ -547,7 +554,7 @@ body.products-page .header-dropdown {
 }
 
 .newsletter-btn:hover {
-    background: #00B815;
+    background: #3DB866;
 }
 
 .footer-social {
@@ -563,7 +570,18 @@ body.products-page .header-dropdown {
 }
 
 .social-link:hover {
-    color: #00DD1A;
+    color: #4EC977;
+}
+
+/* Phone Link Styling */
+.phone-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.phone-link:hover {
+    color: #4EC977;
 }
 
 /* Cart Overlay as Centered Modal */
@@ -738,7 +756,7 @@ body.products-page .header-dropdown {
 }
 
 .checkout-btn {
-    background: #00DD1A;
+    background: #4EC977;
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -750,7 +768,7 @@ body.products-page .header-dropdown {
 }
 
 .checkout-btn:hover {
-    background: #00B815;
+    background: #3DB866;
 }
 
 /* Login Modal */
@@ -808,7 +826,7 @@ body.products-page .header-dropdown {
 }
 
 .login-form button {
-    background: #00DD1A;
+    background: #4EC977;
     color: white;
     border: none;
     padding: 1rem;
@@ -819,7 +837,7 @@ body.products-page .header-dropdown {
 }
 
 .login-form button:hover {
-    background: #00B815;
+    background: #3DB866;
 }
 
 /* Hamburger Menu Styles */
@@ -879,7 +897,7 @@ body.products-page .header-dropdown {
 }
 
 .mobile-nav-link {
-    font-family: 'Days One', cursive;
+    font-family: 'Coolvetica', sans-serif;
     text-decoration: none;
     color: #ffffff;
     font-weight: 500;
@@ -888,7 +906,7 @@ body.products-page .header-dropdown {
 }
 
 .mobile-nav-link:hover {
-    color: #00DD1A;
+    color: #4EC977;
 }
 
 .mobile-nav-item {
@@ -924,7 +942,7 @@ body.products-page .header-dropdown {
 }
 
 .dropdown-link {
-    font-family: 'Days One', cursive;
+    font-family: 'Coolvetica', sans-serif;
     text-decoration: none;
     color: #ffffff;
     font-weight: 400;
@@ -942,8 +960,13 @@ body.products-page .header-dropdown {
     margin-bottom: 1rem;
 }
 
+.mobile-logo a {
+    display: block;
+    text-decoration: none;
+}
+
 .mobile-logo-img {
-    height: 60px;
+    height: 80px;
     width: auto;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
 }
@@ -1206,7 +1229,7 @@ body.products-page .header-dropdown {
     }
     
     .footer-logo-img {
-        height: 60px;
+        height: 80px;
     }
     
     .new-arrivals-grid {
@@ -1295,7 +1318,7 @@ body.products-page .header-dropdown {
     }
     
     .footer-logo-img {
-        height: 50px;
+        height: 70px;
     }
     
     .contact-item h3 {

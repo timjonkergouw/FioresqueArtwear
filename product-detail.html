@@ -2,11 +2,34 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Detail - Fiori</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Product Detail - Fioresque</title>
+    <!-- Favicon voor alle apparaten -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/fioresque favicon.png">
+    <link rel="shortcut icon" href="images/favicon-32x32.png">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/fioresque favicon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/fioresque favicon.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/fioresque favicon.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/fioresque favicon.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/fioresque favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="images/favicon-32x32.png">
+    
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileColor" content="#323131">
+    <meta name="msapplication-TileImage" content="images/favicon-32x32.png">
+    
+    <!-- Web Manifest -->
+    <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/product-detail.css">
-    <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Coolvetica&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -29,7 +52,9 @@
                 <a href="#" class="nav-link">About</a>
             </div>
             <div class="logo">
-                <img src="images/fiori logo zwartwit.png" alt="Fiori Logo" class="logo-img" id="logoImg">
+                <a href="index.html">
+                    <img src="images/fioresque wit.png" alt="Fioresque Logo" class="logo-img" id="logoImg">
+                </a>
             </div>
             <div class="nav-right">
                 <div class="cart-icon" id="cartIcon">
@@ -50,7 +75,7 @@
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
             <div class="mobile-logo">
-                <img src="images/fiori logo zwartwit.png" alt="Fiori Logo" class="mobile-logo-img">
+                <img src="images/fioresque wit.png" alt="Fioresque Logo" class="mobile-logo-img">
             </div>
             <div class="mobile-nav-item">
                 <div class="mobile-nav-link shop-toggle" id="shopToggle">
@@ -79,14 +104,22 @@
             <div class="product-layout">
                 <!-- Product Images -->
                 <div class="product-images">
-                    <div class="main-image">
-                        <img id="mainImage" src="" alt="Product Main Image">
+                    <div class="main-image-container">
+                        <button class="image-nav prev-image-btn" id="prevImageBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="main-image">
+                            <img id="mainImage" src="" alt="Product Main Image">
+                        </div>
+                        <button class="image-nav next-image-btn" id="nextImageBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
-                    <div class="thumbnail-images">
-                        <img class="thumbnail active" src="" alt="Product Front" data-image="">
-                        <img class="thumbnail" src="" alt="Product Back" data-image="">
-                        <img class="thumbnail" src="" alt="Product Detail 1" data-image="">
-                        <img class="thumbnail" src="" alt="Product Detail 2" data-image="">
+                    <div class="image-dots" id="imageDots">
+                        <!-- Dots will be dynamically generated here -->
+                    </div>
+                    <div class="thumbnail-images" id="thumbnailContainer">
+                        <!-- Thumbnails will be dynamically generated here -->
                     </div>
                 </div>
 
@@ -141,7 +174,7 @@
             <!-- Desktop layout -->
             <div class="footer-desktop">
                 <div class="footer-logo">
-                    <img src="images/fiori logo.png" alt="Fiori Logo" class="footer-logo-img">
+                    <img src="images/fioresque logo en tekst wit.png" alt="Fioresque Logo" class="footer-logo-img">
                 </div>
                 <div class="footer-contact">
                     <div class="contact-item">
@@ -189,7 +222,7 @@
                 </div>
                 <div class="footer-bottom-row">
                     <div class="footer-logo">
-                        <img src="images/fiori logo.png" alt="Fiori Logo" class="footer-logo-img">
+                        <img src="images/fioresque logo en tekst wit.png" alt="Fioresque Logo" class="footer-logo-img">
                     </div>
                     <div class="footer-social">
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -231,6 +264,25 @@
                 <input type="password" placeholder="Password" required>
                 <button type="submit">Login</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Image Popup Carousel -->
+    <div class="image-popup" id="imagePopup">
+        <div class="image-popup-content">
+            <button class="close-popup" id="closePopup">&times;</button>
+            <button class="popup-nav prev-btn" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="popup-nav next-btn" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="popup-image-container">
+                <img id="popupImage" src="" alt="Product Image">
+            </div>
+            <div class="popup-thumbnails" id="popupThumbnails">
+                <!-- Thumbnails will be dynamically added here -->
+            </div>
         </div>
     </div>
 

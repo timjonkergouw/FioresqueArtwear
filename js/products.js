@@ -126,8 +126,8 @@ function setupLogoHover() {
     console.log('Logo element:', logoImg); // Debug log
     
     if (logoImg) {
-        const originalSrc = 'images/fiori logo zwartwit.png';
-        const hoverSrc = 'images/fiori logo.png';
+        const originalSrc = 'images/fioresque wit.png';
+        const hoverSrc = 'images/fioresque bloem wit.png';
         
         console.log('Original src:', originalSrc); // Debug log
         console.log('Hover src:', hoverSrc); // Debug log
