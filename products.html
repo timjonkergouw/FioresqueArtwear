@@ -183,6 +183,8 @@
         </div>
     </footer>
 
+
+
     <!-- Cart Overlay -->
     <div class="cart-overlay" id="cartOverlay">
         <div class="cart-content">
@@ -195,7 +197,57 @@
             </div>
             <div class="cart-total">
                 <p>Total: €<span id="cartTotal">0.00</span></p>
-                <button class="checkout-btn">Checkout</button>
+                <button class="checkout-btn" onclick="startCheckout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content">
+            <div class="checkout-header">
+                <h3>Checkout</h3>
+                <button class="close-checkout" onclick="closeCheckoutModal()">&times;</button>
+            </div>
+            <div class="checkout-body">
+                <div class="checkout-items" id="checkoutItems">
+                    <!-- Checkout items will be dynamically added here -->
+                </div>
+                <div class="checkout-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="checkoutSubtotal">€0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span id="checkoutShipping">€0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="checkoutTotal">€0.00</span>
+                    </div>
+                </div>
+                <form class="payment-form" onsubmit="processPayment(event)">
+                    <div class="form-group">
+                        <label for="cardName">Cardholder Name</label>
+                        <input type="text" id="cardName" name="cardName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry">Expiry Date</label>
+                            <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="process-payment-btn">Pay Now</button>
+                </form>
             </div>
         </div>
     </div>

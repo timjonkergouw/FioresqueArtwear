@@ -2,35 +2,35 @@
 const products = [
     {
         id: 1,
-        name: "Fruit Shirt",
+        name: "Logo Tee White",
         price: 40.00,
         category: "shirts",
-        frontImage: "images/fruit shirt back.png",
-        backImage: "images/fruit shirt front.png"
+        frontImage: "images/white tee logo back.png",
+        backImage: "images/white tee logo front.png"
     },
     {
         id: 2,
-        name: "Tropical Shirt",
+        name: "Logo Tee Black",
         price: 40.00,
         category: "shirts",
-        frontImage: "images/tropical shirt back.png",
-        backImage: "images/tropical shirt front.png"
+        frontImage: "images/logo tee zwart achterkant.png",
+        backImage: "images/logo tee zwart voorkant.png"
     },
     {
         id: 3,
-        name: "Vase Shirt",
+        name: "Fioresque Blurry Tee",
         price: 40.00,
         category: "shirts",
-        frontImage: "images/vase shirt back.png",
-        backImage: "images/vase shirt front.png"
+        frontImage: "images/fioresque blurry achterkant.png",
+        backImage: "images/fioresque blurry voorkant.png"
     },
     {
         id: 4,
-        name: "Flower House Shirt",
+        name: "Logo Hoodie Black",
         price: 40.00,
-        category: "shirts",
-        frontImage: "images/flower house back.png",
-        backImage: "images/flower house front.png"
+        category: "hoodies",
+        frontImage: "images/logo hoodie zwart achterkant.png",
+        backImage: "images/logo hoodie zwart voorkant.png"
     }
 ];
 
@@ -173,4 +173,6 @@ document.addEventListener('click', function(e) {
             });
         }
     }
-}); 
+});
+
+ 

@@ -12,32 +12,31 @@
 const products = [
     {
         id: 1,
-        name: "Fruit Shirt",
+        name: "Logo Tee White",
         price: 40.00,
         category: "shirts",
         images: [
-            "images/fruit shirt back.png",
-            "images/fruit shirt front.png",
-            "images/Fiori fruit design 2 1.png", // Additional detail image
-            "images/Fiori t shirt template fruit 2.png" ,
-            "images/Fiori t shirt template fruit 3.png" ,
-            "images/Fiori fruit thee 1.png" , // Additional detail image
+            "images/white tee logo front.png",
+            "images/white tee logo back.png",
+            "images/fioresque tee logo wit achterkant desisgn.png", // Additional detail image
+            "images/fioresque tee logo wit voorkant desisgn.png" ,
+            "images/fioresque logo tee wit met model.png" ,
         ],
-        description: "A unique shirt with a fruit design that perfectly fits the Fioresque style. Made from high-quality materials for comfort and durability.",
+        description: "A classic white t-shirt featuring the iconic Fioresque logo design. This timeless piece combines minimalist elegance with premium comfort, making it perfect for everyday wear. The clean white background showcases the distinctive Fioresque branding, creating a sophisticated yet casual look that effortlessly transitions from day to evening.",
         material: "100% Cotton",
         careInstructions: "Machine wash at 30°C, do not bleach",
         origin: "Made in Netherlands"
     },
     {
         id: 2,
-        name: "Tropical Shirt",
+        name: "Logo Tee Black",
         price: 40.00,
         category: "shirts",
         images: [
-            "images/tropical shirt back.png",
-            "images/tropical shirt front.png",
-            "images/tropical shirt back.png", // Additional detail image
-            "images/tropical shirt front.png"  // Additional detail image
+            "images/logo tee zwart voorkant.png",
+            "images/logo tee zwart achterkant.png",
+            "images/fioresque tee zwart voorkant design.png", // Additional detail image
+            "images/fioresque tee zwart achterkant design.png"  // Additional detail image
         ],
         description: "A tropical shirt with vibrant colors and an exotic design. Perfect for summer days and vacation vibes.",
         material: "100% Cotton",
@@ -46,14 +45,15 @@ const products = [
     },
     {
         id: 3,
-        name: "Vase Shirt",
+        name: "Fioresque Blurry Tee",
         price: 40.00,
         category: "shirts",
         images: [
-            "images/vase shirt back.png",
-            "images/vase shirt front.png",
-            "images/vase shirt back.png", // Additional detail image
-            "images/vase shirt front.png"  // Additional detail image
+            "images/fioresque blurry voorkant.png",
+            "images/fioresque blurry achterkant.png",
+            "images/fioresque blurry voorkant design.png", // Additional detail image
+            "images/fioresque blurry achterkant design.png",
+            "images/fioresque blurry tee model.png"  // Additional detail image
         ],
         description: "An elegant shirt with a vase design that combines art and fashion. Unique and stylish for any occasion.",
         material: "100% Cotton",
@@ -62,14 +62,15 @@ const products = [
     },
     {
         id: 4,
-        name: "Flower House Shirt",
+        name: "logo hoodie black",
         price: 40.00,
-        category: "shirts",
+        category: "hoodies",
         images: [
-            "images/flower house back.png",
-            "images/flower house front.png",
-            "images/flower house back.png", // Additional detail image
-            "images/flower house front.png"  // Additional detail image
+            "images/logo hoodie zwart voorkant.png",
+            "images/logo hoodie zwart achterkant.png",
+            "images/fioresque tee zwart voorkant design.png", // Additional detail image
+            "images/fioresque tee zwart achterkant design.png",
+            "images/fioresque logo hoodie zwart model.png"  // Additional detail image
         ],
         description: "A beautiful shirt with a flower house design that combines nature and architecture. Perfect for the Fioresque collection.",
         material: "100% Cotton",
@@ -84,7 +85,7 @@ let selectedSize = null;
 let currentImageIndex = 0;
 let productImages = [];
 let slideshowInterval = null;
-let isSlideshowActive = true;
+let isSlideshowActive = false; // Disabled automatic slideshow
 
 // DOM elements
 const mainImage = document.getElementById('mainImage');
@@ -273,8 +274,7 @@ function displayProduct() {
     // Setup dot indicators
     setupDotIndicators();
     
-    // Start slideshow
-    startSlideshow();
+    // Slideshow disabled - removed automatic slideshow
     
     // Update page title
     document.title = `${currentProduct.name} - Fioresque`;
@@ -285,12 +285,9 @@ function setupThumbnailEvents() {
     thumbnailContainer.querySelectorAll('.thumbnail').forEach(thumbnail => {
         thumbnail.addEventListener('click', function() {
             const imageIndex = parseInt(this.getAttribute('data-index'));
-            pauseSlideshow();
             const direction = imageIndex > currentImageIndex ? 'right' : 'left';
             currentImageIndex = imageIndex;
             updateMainImage(direction);
-            // Resume slideshow after 3 seconds of inactivity
-            setTimeout(resumeSlideshow, 3000);
         });
     });
 }
@@ -390,19 +387,13 @@ function setupImageNavigationEvents() {
     updatedPrevBtn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        pauseSlideshow();
         showPreviousMainImage();
-        // Resume slideshow after 3 seconds of inactivity
-        setTimeout(resumeSlideshow, 3000);
     });
     
     updatedNextBtn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        pauseSlideshow();
         showNextMainImage();
-        // Resume slideshow after 3 seconds of inactivity
-        setTimeout(resumeSlideshow, 3000);
     });
 }
 
@@ -447,20 +438,14 @@ function showNextImage() {
 
 // Show previous main image
 function showPreviousMainImage() {
-    pauseSlideshow();
     currentImageIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
     updateMainImage('left');
-    // Resume slideshow after 3 seconds of inactivity
-    setTimeout(resumeSlideshow, 3000);
 }
 
 // Show next main image
 function showNextMainImage() {
-    pauseSlideshow();
     currentImageIndex = (currentImageIndex + 1) % productImages.length;
     updateMainImage('right');
-    // Resume slideshow after 3 seconds of inactivity
-    setTimeout(resumeSlideshow, 3000);
 }
 
 // Slideshow functions
@@ -702,13 +687,10 @@ function setupDotIndicators() {
         dot.classList.add('image-dot');
         dot.setAttribute('data-index', index);
         dot.addEventListener('click', function() {
-            pauseSlideshow();
             const imageIndex = parseInt(this.getAttribute('data-index'));
             const direction = imageIndex > currentImageIndex ? 'right' : 'left';
             currentImageIndex = imageIndex;
             updateMainImage(direction);
-            // Resume slideshow after 3 seconds of inactivity
-            setTimeout(resumeSlideshow, 3000);
         });
         imageDots.appendChild(dot);
     });
@@ -717,6 +699,8 @@ function setupDotIndicators() {
         dot.classList.toggle('active', index === currentImageIndex);
     });
 }
+
+
 
 // Update add to cart button state
 function updateAddToCartButton() {

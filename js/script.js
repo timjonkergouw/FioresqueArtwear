@@ -1,6 +1,7 @@
 // Global variables
 let isLoggedIn = false;
 let cart = [];
+let isCheckoutActive = false;
 
 // DOM elements
 const accountIcon = document.getElementById('accountIcon');
@@ -103,6 +104,8 @@ function setupEventListeners() {
     // Setup logo hover functionality
     setupLogoHover();
 }
+
+
 
 // Cart functions
 function addToCart(product) {
@@ -221,6 +224,111 @@ function loadCartFromStorage() {
     if (savedCart) {
         cart = JSON.parse(savedCart);
     }
+}
+
+// Checkout functions
+function startCheckout() {
+    if (cart.length === 0) {
+        alert('Your cart is empty');
+        return;
+    }
+    
+    if (!isLoggedIn) {
+        alert('Please login first to proceed with checkout');
+        toggleLogin();
+        return;
+    }
+    
+    isCheckoutActive = true;
+    showCheckoutModal();
+}
+
+function showCheckoutModal() {
+    const checkoutModal = document.getElementById('checkoutModal');
+    if (checkoutModal) {
+        checkoutModal.classList.add('active');
+        updateCheckoutDisplay();
+    }
+}
+
+function closeCheckoutModal() {
+    const checkoutModal = document.getElementById('checkoutModal');
+    if (checkoutModal) {
+        checkoutModal.classList.remove('active');
+        isCheckoutActive = false;
+    }
+}
+
+function updateCheckoutDisplay() {
+    const checkoutItems = document.getElementById('checkoutItems');
+    const checkoutTotal = document.getElementById('checkoutTotal');
+    const checkoutSubtotal = document.getElementById('checkoutSubtotal');
+    const checkoutShipping = document.getElementById('checkoutShipping');
+    
+    if (!checkoutItems) return;
+    
+    checkoutItems.innerHTML = '';
+    let subtotal = 0;
+    
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+        
+        const checkoutItem = document.createElement('div');
+        checkoutItem.className = 'checkout-item';
+        
+        const displayName = item.size ? `${item.name} (${item.size})` : item.name;
+        
+        checkoutItem.innerHTML = `
+            <div class="checkout-item-image">
+                <img src="${item.image}" alt="${item.name}">
+            </div>
+            <div class="checkout-item-details">
+                <h4>${displayName}</h4>
+                <p>€${item.price.toFixed(2)} x ${item.quantity}</p>
+            </div>
+            <div class="checkout-item-total">
+                €${itemTotal.toFixed(2)}
+            </div>
+        `;
+        
+        checkoutItems.appendChild(checkoutItem);
+    });
+    
+    const shipping = subtotal > 0 ? 5.99 : 0;
+    const total = subtotal + shipping;
+    
+    if (checkoutSubtotal) checkoutSubtotal.textContent = `€${subtotal.toFixed(2)}`;
+    if (checkoutShipping) checkoutShipping.textContent = `€${shipping.toFixed(2)}`;
+    if (checkoutTotal) checkoutTotal.textContent = `€${total.toFixed(2)}`;
+}
+
+function processPayment(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    
+    // Simulate payment processing
+    const processBtn = form.querySelector('.process-payment-btn');
+    const originalText = processBtn.textContent;
+    processBtn.textContent = 'Processing...';
+    processBtn.disabled = true;
+    
+    setTimeout(() => {
+        // Simulate successful payment
+        showNotification('Payment successful! Your order has been placed.');
+        cart = [];
+        saveCartToStorage();
+        updateCartDisplay();
+        closeCheckoutModal();
+        toggleCart();
+        
+        // Reset form
+        form.reset();
+        processBtn.textContent = originalText;
+        processBtn.disabled = false;
+    }, 2000);
 }
 
 // Login functions
